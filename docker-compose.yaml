@@ -21,7 +21,4 @@ services:
       - "8080:80"
 
     volumes:
-      - pgadmin_data:/var/lin/pgadmin:rw
-
-volumes:
-  pgadmin_data:
+      - "./pgadmin_data:/var/lib/pgadmin:rw"
