@@ -1,1 +1,1 @@
-# nyc-taxi-trips-analytics-pipeline
+# New York Taxi Trips Analytics Pipeline
