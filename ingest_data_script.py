@@ -19,10 +19,13 @@ def main(params):
 
     source_name = 'trips.parquet'
 
+    #Downloading and storing the source data file
     os.system(f'wget -nc {url} -O {source_name}')
 
+    #Reading the parquet file
     trips_parquet = pq.ParquetFile(source_name)
     
+    #Exploratory Analysis of the first 100 rows of data (by creating a batch and reading 100 rows from 1st batch)
     batch_iter_temp = trips_parquet.iter_batches(batch_size=100)
     df_temp = next(batch_iter_temp).to_pandas()
     print(df_temp.head())
@@ -33,14 +36,17 @@ def main(params):
     #df['tpep_pickup_datetime'] = pd.to_datetime(df['tpep_pickup_datetime'])
     #df['tpep_dropoff_datetime'] = pd.to_datetime(df['tpep_dropoff_datetime'])
 
+    #Getting the schema SQL query to create a table of similar data types to target database
     print(pd.io.sql.get_schema(df_temp, f'{table}')) # type: ignore
 
+    #Connecting to the target database
     postgres_engine = create_engine(f'postgresql://{user}:{password}@{host}:{port}/{database}')
     postgres_engine.connect()
 
     #Getting schema/table creation query compatible to postgresql database
     print(pd.io.sql.get_schema(df_temp, f'{table}', con=postgres_engine)) # type: ignore
 
+    #Reading the data in pandas dataframe in batches of 0.2M rows
     batch_iter = trips_parquet.iter_batches(batch_size=200000)
     df = next(batch_iter).to_pandas()
 
