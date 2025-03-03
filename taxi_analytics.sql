@@ -113,13 +113,39 @@ FROM
 	YELLOW_TAXI_CONSOLIDATED;
 	
 --Analyzing the fare revenue in a day by pick up location.
+
 SELECT
-	(TPEP_PICKUP_DATETIME::DATE) AS "date",
+	(tpep_pickup_datetime::date) AS "date",
 	"PUBorough",
-	SUM(TOTAL_AMOUNT) AS TOTAL
+	round(SUM(total_amount)::numeric,2) AS total_revenue
 FROM
-	YELLOW_TAXI_CONSOLIDATED
+	yellow_taxi_consolidated
 GROUP BY
 	1, 2
 ORDER BY
-	TOTAL DESC;
+	total_revenue DESC;
+
+-- Analyzing count of trips by date for the month to understand the trend of customers going out / traveling, and percentile of contributions of trips each day month over month.
+
+WITH
+	trips_by_date AS (
+	SELECT
+		(tpep_pickup_datetime::date) AS "date",
+		COUNT(1) AS trips_count
+	FROM
+		yellow_taxi_consolidated
+	GROUP BY 
+		date
+	ORDER BY 
+		trips_count DESC
+)
+
+SELECT
+	date,
+	trips_count,
+	round(
+	(trips_count/SUM(trips_count) OVER() * 100 ), 2
+	) AS perc_trips
+FROM
+	trips_by_date;
+
