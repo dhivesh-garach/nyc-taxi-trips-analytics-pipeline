@@ -149,3 +149,24 @@ SELECT
 FROM
 	trips_by_date;
 
+-- Analyzing tip amount trends for Jan 2024 month for yellow taxi trips. Surprisingly lot of customers have tipped more than the trip cost on certain days. That's an interesting insight.
+-- Observations: 35K customers records shows that the total_amount
+more than the trip cost in Jan 2024.
+
+WITH tips_cte AS (
+SELECT
+	tpep_pickup_datetime::date AS trip_date,
+	(tpep_dropoff_datetime - tpep_pickup_datetime) AS time_taken,
+	trip_distance, 
+	tip_amount,
+	total_amount,
+	round((total_amount - tip_amount)::numeric, 2) AS trip_cost
+FROM
+	yellow_taxi_consolidated
+ORDER BY 
+	trip_date, tip_amount DESC
+)
+
+SELECT *
+FROM tips_cte
+WHERE tip_amount > trip_cost  AND total_amount > 0;
