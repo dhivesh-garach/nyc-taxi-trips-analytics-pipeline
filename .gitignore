@@ -3,3 +3,5 @@ pgadmin_data
 postgres_data
 .vscode
 ny_yellow_taxi_dataset
+
+.*
