@@ -1,3 +1,4 @@
+#ignored by git
 pgadmin_data
 postgres_data
 .vscode
