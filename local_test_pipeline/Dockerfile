@@ -1,4 +1,4 @@
-#docker config file
+#docker config file.
 FROM python:latest
 
 RUN apt-get install wget
