@@ -2,14 +2,20 @@
 services:
   postgresDB:
     image: postgres:latest
+
     environment:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
       - POSTGRES_DB=ny_taxi
+
     volumes:
       - "./postgres_data:/var/lib/postgresql/data:rw"
+
     ports:
       - 5431:5432
+
+    networks:
+      - airflow
 
   pgadmin:
     image: dpage/pgadmin4
@@ -19,7 +25,15 @@ services:
       - PGADMIN_DEFAULT_PASSWORD=root
     
     ports:
-      - "8080:80"
+      - "8081:80"
+
+    networks:
+      - airflow
 
     volumes:
       - "./pgadmin_data:/var/lib/pgadmin:rw"
+
+networks:
+  airflow:
+    name: airflow_default
+    external: true
