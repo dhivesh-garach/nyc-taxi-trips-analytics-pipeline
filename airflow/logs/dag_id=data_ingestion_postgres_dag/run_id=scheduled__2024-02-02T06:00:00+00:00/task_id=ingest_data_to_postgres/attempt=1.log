@@ -1,0 +1,98 @@
+[2025-03-25T15:56:33.256+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-03-25T15:56:33.287+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: data_ingestion_postgres_dag.ingest_data_to_postgres scheduled__2024-02-02T06:00:00+00:00 [queued]>
+[2025-03-25T15:56:33.301+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: data_ingestion_postgres_dag.ingest_data_to_postgres scheduled__2024-02-02T06:00:00+00:00 [queued]>
+[2025-03-25T15:56:33.301+0000] {taskinstance.py:2867} INFO - Starting attempt 1 of 1
+[2025-03-25T15:56:33.319+0000] {taskinstance.py:2890} INFO - Executing <Task(PythonOperator): ingest_data_to_postgres> on 2024-02-02 06:00:00+00:00
+[2025-03-25T15:56:33.329+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=370) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2025-03-25T15:56:33.332+0000] {standard_task_runner.py:72} INFO - Started process 372 to run task
+[2025-03-25T15:56:33.334+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'data_ingestion_postgres_dag', 'ingest_data_to_postgres', 'scheduled__2024-02-02T06:00:00+00:00', '--job-id', '203', '--raw', '--subdir', 'DAGS_FOLDER/data_ingestion_postgres_dag.py', '--cfg-path', '/tmp/tmpr5qktqwj']
+[2025-03-25T15:56:33.338+0000] {standard_task_runner.py:105} INFO - Job 203: Subtask ingest_data_to_postgres
+[2025-03-25T15:56:33.404+0000] {task_command.py:467} INFO - Running <TaskInstance: data_ingestion_postgres_dag.ingest_data_to_postgres scheduled__2024-02-02T06:00:00+00:00 [running]> on host 7185680cfdb6
+[2025-03-25T15:56:33.839+0000] {taskinstance.py:3134} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='data_ingestion_postgres_dag' AIRFLOW_CTX_TASK_ID='ingest_data_to_postgres' AIRFLOW_CTX_EXECUTION_DATE='2024-02-02T06:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-02-02T06:00:00+00:00'
+[2025-03-25T15:56:33.840+0000] {taskinstance.py:732} INFO - ::endgroup::
+[2025-03-25T15:56:33.858+0000] {logging_mixin.py:190} INFO - yellow_taxi_2024_02 /opt/***/yellow_taxi_2024-02.parquet
+[2025-03-25T15:56:33.876+0000] {logging_mixin.py:190} INFO - Connection to database established!
+[2025-03-25T15:56:33.941+0000] {logging_mixin.py:190} INFO - <class 'pandas.core.frame.DataFrame'>
+RangeIndex: 100 entries, 0 to 99
+Data columns (total 19 columns):
+ #   Column                 Non-Null Count  Dtype         
+---  ------                 --------------  -----         
+ 0   VendorID               100 non-null    int32         
+ 1   tpep_pickup_datetime   100 non-null    datetime64[us]
+ 2   tpep_dropoff_datetime  100 non-null    datetime64[us]
+ 3   passenger_count        100 non-null    int64         
+ 4   trip_distance          100 non-null    float64       
+ 5   RatecodeID             100 non-null    int64         
+ 6   store_and_fwd_flag     100 non-null    object        
+ 7   PULocationID           100 non-null    int32         
+ 8   DOLocationID           100 non-null    int32         
+ 9   payment_type           100 non-null    int64         
+ 10  fare_amount            100 non-null    float64       
+ 11  extra                  100 non-null    float64       
+ 12  mta_tax                100 non-null    float64       
+ 13  tip_amount             100 non-null    float64       
+ 14  tolls_amount           100 non-null    float64       
+ 15  improvement_surcharge  100 non-null    float64       
+ 16  total_amount           100 non-null    float64       
+ 17  congestion_surcharge   100 non-null    float64       
+ 18  Airport_fee            100 non-null    float64       
+dtypes: datetime64[us](2), float64(10), int32(3), int64(3), object(1)
+memory usage: 13.8+ KB
+[2025-03-25T15:56:33.941+0000] {logging_mixin.py:190} INFO - None
+[2025-03-25T15:56:33.948+0000] {logging_mixin.py:190} INFO - CREATE TABLE "yellow_taxi_2024_02" (
+"VendorID" INTEGER,
+  "tpep_pickup_datetime" TIMESTAMP,
+  "tpep_dropoff_datetime" TIMESTAMP,
+  "passenger_count" INTEGER,
+  "trip_distance" REAL,
+  "RatecodeID" INTEGER,
+  "store_and_fwd_flag" TEXT,
+  "PULocationID" INTEGER,
+  "DOLocationID" INTEGER,
+  "payment_type" INTEGER,
+  "fare_amount" REAL,
+  "extra" REAL,
+  "mta_tax" REAL,
+  "tip_amount" REAL,
+  "tolls_amount" REAL,
+  "improvement_surcharge" REAL,
+  "total_amount" REAL,
+  "congestion_surcharge" REAL,
+  "Airport_fee" REAL
+)
+[2025-03-25T15:56:33.955+0000] {logging_mixin.py:190} INFO - 
+CREATE TABLE yellow_taxi_2024_02 (
+	"VendorID" INTEGER, 
+	tpep_pickup_datetime TIMESTAMP WITHOUT TIME ZONE, 
+	tpep_dropoff_datetime TIMESTAMP WITHOUT TIME ZONE, 
+	passenger_count BIGINT, 
+	trip_distance FLOAT(53), 
+	"RatecodeID" BIGINT, 
+	store_and_fwd_flag TEXT, 
+	"PULocationID" INTEGER, 
+	"DOLocationID" INTEGER, 
+	payment_type BIGINT, 
+	fare_amount FLOAT(53), 
+	extra FLOAT(53), 
+	mta_tax FLOAT(53), 
+	tip_amount FLOAT(53), 
+	tolls_amount FLOAT(53), 
+	improvement_surcharge FLOAT(53), 
+	total_amount FLOAT(53), 
+	congestion_surcharge FLOAT(53), 
+	"Airport_fee" FLOAT(53)
+)
+[2025-03-25T15:57:06.453+0000] {logging_mixin.py:190} INFO - Inserted first chunk, time taken 32.391
+[2025-03-25T15:57:37.855+0000] {logging_mixin.py:190} INFO - Another chunk inserted, time taken 31.401
+[2025-03-25T15:58:06.449+0000] {logging_mixin.py:190} INFO - Another chunk inserted, time taken 28.593
+[2025-03-25T15:58:37.237+0000] {logging_mixin.py:190} INFO - Another chunk inserted, time taken 30.787
+[2025-03-25T15:59:09.355+0000] {logging_mixin.py:190} INFO - Another chunk inserted, time taken 32.116
+[2025-03-25T15:59:41.869+0000] {logging_mixin.py:190} INFO - Another chunk inserted, time taken 32.513
+[2025-03-25T16:00:12.652+0000] {logging_mixin.py:190} INFO - Another chunk inserted, time taken 30.782
+[2025-03-25T16:00:47.196+0000] {logging_mixin.py:190} INFO - Another chunk inserted, time taken 34.543
+[2025-03-25T16:01:19.385+0000] {logging_mixin.py:190} INFO - Another chunk inserted, time taken 32.187
+[2025-03-25T16:01:51.252+0000] {logging_mixin.py:190} INFO - Another chunk inserted, time taken 31.867
+[2025-03-25T16:02:42.132+0000] {logging_mixin.py:190} INFO - Another chunk inserted, time taken 50.879
+[2025-03-25T16:03:16.823+0000] {logging_mixin.py:190} INFO - Another chunk inserted, time taken 34.690

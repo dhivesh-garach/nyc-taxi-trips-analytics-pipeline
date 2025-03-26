@@ -1,0 +1,24 @@
+[2025-03-24T12:34:47.879+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-03-24T12:34:48.026+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: data_ingestion_postgres_dag.ingest scheduled__2023-01-02T06:00:00+00:00 [queued]>
+[2025-03-24T12:34:48.064+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: data_ingestion_postgres_dag.ingest scheduled__2023-01-02T06:00:00+00:00 [queued]>
+[2025-03-24T12:34:48.064+0000] {taskinstance.py:2867} INFO - Starting attempt 1 of 1
+[2025-03-24T12:34:48.107+0000] {taskinstance.py:2890} INFO - Executing <Task(BashOperator): ingest> on 2023-01-02 06:00:00+00:00
+[2025-03-24T12:34:48.151+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=3045) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2025-03-24T12:34:48.176+0000] {standard_task_runner.py:72} INFO - Started process 3080 to run task
+[2025-03-24T12:34:48.204+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'data_ingestion_postgres_dag', 'ingest', 'scheduled__2023-01-02T06:00:00+00:00', '--job-id', '104', '--raw', '--subdir', 'DAGS_FOLDER/data_ingestion_postgres_dag.py', '--cfg-path', '/tmp/tmpsja678oh']
+[2025-03-24T12:34:48.220+0000] {standard_task_runner.py:105} INFO - Job 104: Subtask ingest
+[2025-03-24T12:34:48.500+0000] {task_command.py:467} INFO - Running <TaskInstance: data_ingestion_postgres_dag.ingest scheduled__2023-01-02T06:00:00+00:00 [running]> on host 4791d3610749
+[2025-03-24T12:34:49.047+0000] {taskinstance.py:3134} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='data_ingestion_postgres_dag' AIRFLOW_CTX_TASK_ID='ingest' AIRFLOW_CTX_EXECUTION_DATE='2023-01-02T06:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-01-02T06:00:00+00:00'
+[2025-03-24T12:34:49.048+0000] {taskinstance.py:732} INFO - ::endgroup::
+[2025-03-24T12:34:49.191+0000] {subprocess.py:78} INFO - Tmp dir root location: /tmp
+[2025-03-24T12:34:49.234+0000] {subprocess.py:88} INFO - Running command: ['/usr/bin/bash', '-c', 'echo "ls"']
+[2025-03-24T12:34:49.287+0000] {subprocess.py:99} INFO - Output:
+[2025-03-24T12:34:49.297+0000] {subprocess.py:106} INFO - ls
+[2025-03-24T12:34:49.297+0000] {subprocess.py:110} INFO - Command exited with return code 0
+[2025-03-24T12:34:49.415+0000] {taskinstance.py:341} INFO - ::group::Post task execution logs
+[2025-03-24T12:34:49.417+0000] {taskinstance.py:353} INFO - Marking task as SUCCESS. dag_id=data_ingestion_postgres_dag, task_id=ingest, run_id=scheduled__2023-01-02T06:00:00+00:00, execution_date=20230102T060000, start_date=20250324T123448, end_date=20250324T123449
+[2025-03-24T12:34:49.636+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-03-24T12:34:49.703+0000] {taskinstance.py:3901} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-03-24T12:34:49.715+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
