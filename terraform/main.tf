@@ -26,3 +26,9 @@ resource "google_storage_bucket" "taxi-rides" {
     }
   }
 }
+
+resource "google_bigquery_dataset" "taxi_rides_ny" {
+  dataset_id = "taxi_rides_ny"
+  location = "asia-south2"
+  delete_contents_on_destroy = true
+}
