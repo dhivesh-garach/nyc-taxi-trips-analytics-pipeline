@@ -1,0 +1,1 @@
+#Variables config to pass it to main terraform config
