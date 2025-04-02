@@ -1,0 +1,24 @@
+[2025-04-02T11:31:08.119+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-04-02T11:31:08.152+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: data_ingestion_gcs_parquet_dag.download_dataset_task scheduled__2024-02-02T06:00:00+00:00 [queued]>
+[2025-04-02T11:31:08.165+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: data_ingestion_gcs_parquet_dag.download_dataset_task scheduled__2024-02-02T06:00:00+00:00 [queued]>
+[2025-04-02T11:31:08.166+0000] {taskinstance.py:2867} INFO - Starting attempt 1 of 1
+[2025-04-02T11:31:08.187+0000] {taskinstance.py:2890} INFO - Executing <Task(BashOperator): download_dataset_task> on 2024-02-02 06:00:00+00:00
+[2025-04-02T11:31:08.199+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=235) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2025-04-02T11:31:08.202+0000] {standard_task_runner.py:72} INFO - Started process 240 to run task
+[2025-04-02T11:31:08.203+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'data_ingestion_gcs_parquet_dag', 'download_dataset_task', 'scheduled__2024-02-02T06:00:00+00:00', '--job-id', '257', '--raw', '--subdir', 'DAGS_FOLDER/data_ingestion_gcs_parquet_dag.py', '--cfg-path', '/tmp/tmpwsdf4p2c']
+[2025-04-02T11:31:08.208+0000] {standard_task_runner.py:105} INFO - Job 257: Subtask download_dataset_task
+[2025-04-02T11:31:08.293+0000] {task_command.py:467} INFO - Running <TaskInstance: data_ingestion_gcs_parquet_dag.download_dataset_task scheduled__2024-02-02T06:00:00+00:00 [running]> on host 0f77830e7010
+[2025-04-02T11:31:08.439+0000] {taskinstance.py:3134} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='data_ingestion_gcs_parquet_dag' AIRFLOW_CTX_TASK_ID='download_dataset_task' AIRFLOW_CTX_EXECUTION_DATE='2024-02-02T06:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-02-02T06:00:00+00:00'
+[2025-04-02T11:31:08.441+0000] {taskinstance.py:732} INFO - ::endgroup::
+[2025-04-02T11:31:08.501+0000] {subprocess.py:78} INFO - Tmp dir root location: /tmp
+[2025-04-02T11:31:08.502+0000] {subprocess.py:88} INFO - Running command: ['/usr/bin/bash', '-c', '\n        curl -sSL https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-02.parquet > /opt/***/yellow_tripdata_2024-02.parquet &&\n        echo "Source dataset downloaded successfully!"\n        ']
+[2025-04-02T11:31:08.523+0000] {subprocess.py:99} INFO - Output:
+[2025-04-02T11:31:14.317+0000] {subprocess.py:106} INFO - Source dataset downloaded successfully!
+[2025-04-02T11:31:14.318+0000] {subprocess.py:110} INFO - Command exited with return code 0
+[2025-04-02T11:31:14.397+0000] {taskinstance.py:341} INFO - ::group::Post task execution logs
+[2025-04-02T11:31:14.398+0000] {taskinstance.py:353} INFO - Marking task as SUCCESS. dag_id=data_ingestion_gcs_parquet_dag, task_id=download_dataset_task, run_id=scheduled__2024-02-02T06:00:00+00:00, execution_date=20240202T060000, start_date=20250402T113108, end_date=20250402T113114
+[2025-04-02T11:31:14.478+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-04-02T11:31:14.536+0000] {taskinstance.py:3901} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-04-02T11:31:14.538+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

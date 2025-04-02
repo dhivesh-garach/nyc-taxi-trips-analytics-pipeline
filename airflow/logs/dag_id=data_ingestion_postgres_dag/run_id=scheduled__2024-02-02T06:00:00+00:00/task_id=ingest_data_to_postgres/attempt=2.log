@@ -106,3 +106,6 @@ CREATE TABLE yellow_taxi_2024_02 (
 [2025-03-25T16:19:38.561+0000] {taskinstance.py:353} INFO - Marking task as SUCCESS. dag_id=data_ingestion_postgres_dag, task_id=ingest_data_to_postgres, run_id=scheduled__2024-02-02T06:00:00+00:00, execution_date=20240202T060000, start_date=20250325T161156, end_date=20250325T161938
 [2025-03-25T16:19:38.744+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
 [2025-03-25T16:19:38.770+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-04-02T07:30:59.448+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-04-02T07:30:59.467+0000] {taskinstance.py:2604} INFO - Dependencies not met for <TaskInstance: data_ingestion_postgres_dag.ingest_data_to_postgres scheduled__2024-02-02T06:00:00+00:00 [success]>, dependency 'Task Instance State' FAILED: Task is in the 'success' state.
+[2025-04-02T07:30:59.493+0000] {local_task_job_runner.py:166} INFO - Task is not able to be run
