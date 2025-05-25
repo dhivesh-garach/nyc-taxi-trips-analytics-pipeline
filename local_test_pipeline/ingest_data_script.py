@@ -33,8 +33,8 @@ def main(params):
     print(df_temp.info())
 
     #Converting the data type of the date fields which are text type to datetime data type
-    #df['tpep_pickup_datetime'] = pd.to_datetime(df['tpep_pickup_datetime']) - I am making changes on this line
-    #df['tpep_dropoff_datetime'] = pd.to_datetime(df['tpep_dropoff_datetime']) - This also changed, feature enhanced.
+    #Adding line 3
+    #Adding line 4
 
     #Getting the schema SQL query to create a table of similar data types to target database
     print(pd.io.sql.get_schema(df_temp, f'{table}')) # type: ignore
